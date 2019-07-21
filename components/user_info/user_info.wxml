@@ -1,0 +1,8 @@
+<view class='user'>            
+    <image 
+        class='user_logo' 
+        src='{{avatar}}'
+        hidden="{{avatar==''}}"
+    ></image>
+    <view >{{name || ""}}</view>
+</view>

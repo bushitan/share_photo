@@ -1,0 +1,56 @@
+<cover-view class='page'>  
+<cover-view class='user'>            
+    <cover-image 
+        class='user_logo' 
+        src='{{node.author_avatar_url}}'
+        hidden="{{node.author_avatar_url==''}}"
+    ></cover-image>
+    <cover-view >{{node.author_nick_name || ""}}</cover-view>
+</cover-view>
+
+        <!-- mode='aspectFit' -->
+        
+        <!-- src='{{node.qr + "?imageView2/1/w/500/h/710/q/75"}}'  -->
+<cover-view class='box'>
+    <cover-image 
+        class='cover' 
+        src='{{node.qr + "?imageView2/1/w/96/h/96"}}' 
+        
+        catchtap='toRedCover' 
+        data-cover="{{node.qr}}"
+        mode='center'
+    ></cover-image>
+    <cover-view class='content'>
+        <cover-view class='title'>{{node.title}}</cover-view>
+        <cover-view class='summary'>{{node.summary}}</cover-view>
+        <cover-view class='tool'>
+            <cover-view 
+                class='wx btn'  
+                catchtap='toWX' 
+                data-url="{{node.url}}"
+                hidden='{{node.url==""}}'
+                >详情
+            </cover-view>
+            
+            <cover-view 
+                class='red btn'  
+                catchtap='toRedCover' 
+                data-cover="{{node.qr}}"
+                hidden='{{node.qr==""}}'
+                >种草
+            </cover-view>
+        </cover-view>
+    </cover-view>
+</cover-view >
+<cover-view style='height:10px'></cover-view >
+
+</cover-view >
+
+
+
+            <!-- <cover-image 
+                class='red_logo' 
+                src='../../images/red_logo.png'
+                catchtap='toRedCover' 
+                data-cover="{{node.qr}}"
+            ></cover-image> -->

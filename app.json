@@ -1,0 +1,51 @@
+{
+    "pages": [
+        "pages/route/route",
+        "pages/article/article",
+        "pages/blogger/blogger",
+        "pages/seller/seller",
+        "pages/customer/customer"
+    ],
+    "window": {
+        "backgroundTextStyle": "light",
+        "navigationBarBackgroundColor": "#fff",
+        "navigationBarTitleText": "分享照片墙",
+        "navigationBarTextStyle": "black"
+    },
+    "tabBar": {
+        "color": "#cdcdcd",
+        "selectedColor": "#ffbc34",
+        "backgroundColor": "#ffffff",
+        "borderStyle": "black",
+        "list": [
+            {
+                "pagePath": "pages/blogger/blogger",
+                "text": "夜游达人",
+                "iconPath": "images/tabbar_view.png",
+                "selectedIconPath": "images/tabbar_view_select.png"
+            },
+            {
+                "pagePath": "pages/customer/customer",
+                "text": "我的摄影",
+                "iconPath": "images/tabbar_view.png",
+                "selectedIconPath": "images/tabbar_view_select.png"
+            }
+        ]
+    },
+    "navigateToMiniProgramAppIdList": [
+        "wx7500cd1b23a33998",
+        "wxd19bbe9cb3b293b6"
+    ],
+    "plugins": {
+        "brickLayout": {
+            "version": "0.2.0",
+            "provider": "wx3c042630f3cdc175"
+        }
+    },
+    "permission": {
+        "scope.userLocation": {
+            "desc": "你的位置信息将用于小程序位置接口的效果展示"
+        }
+    },
+    "sitemapLocation": "sitemap.json"
+}

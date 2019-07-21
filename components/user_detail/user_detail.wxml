@@ -1,0 +1,33 @@
+<!-- <view class='user'>            
+    <image 
+        class='user_logo' 
+        src='{{avatar}}'
+        hidden="{{avatar==''}}"
+    ></image>
+    <view >{{name || ""}}</view>
+</view> -->
+
+
+<view class="flex">
+    <image 
+        class='user_logo' 
+        src='{{avatar}}'
+        hidden="{{avatar==''}}"
+    ></image>
+</view>
+
+<view class="flex">
+    <view >{{name || ""}}</view>
+</view>
+
+<view style="height:15px"></view>
+
+<view class="flex flex_around">
+    <view >5</view>
+    <view >20</view>
+</view>
+
+<view class="flex flex_around">
+    <view >照片数</view>
+    <view >分享数</view>
+</view>

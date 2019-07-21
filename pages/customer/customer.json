@@ -1,0 +1,6 @@
+{
+    "usingComponents": {
+        "user_detail": "../../components/user_detail/user_detail",
+        "time_line":"../../components/time_line/time_line"
+    }
+}

@@ -1,0 +1,22 @@
+<!--pages/customer/customer.wxml-->
+
+<view class="page">
+    <!-- <view>分享数集齐30个，到年卡办理点兑换小礼物</view>
+    <button >兑换</button> -->
+    <user_detail
+        avatar="{{userInfo.avatar}}"
+        name="{{userInfo.name}}"
+    ></user_detail>
+
+    <time_line
+        list="{{photoList}}"
+    ></time_line>
+
+</view>
+<view style="height:50px;"></view>
+<view class="flex footer">
+    <view>分享数集齐30个，到年卡办理点兑换小礼物</view>
+    <!-- <view> -->
+            <button size="mini">兑换</button>
+    <!-- </view> -->
+</view>

@@ -1,0 +1,33 @@
+
+/* .user{
+    display: flex;
+    align-items: center;
+    font-size: 11pt;
+}
+.user_logo{
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    margin:10px 10px 10px 0;
+}
+ */
+page{
+    font-size: 11pt;
+}
+
+.flex{
+    display: flex;
+    justify-content: center;
+}
+.flex_around{
+    justify-content: space-around;
+
+}
+
+
+.user_logo{
+    border-radius: 50%;
+    width: 72px;
+    height: 72px;
+    margin:10px 0;
+}

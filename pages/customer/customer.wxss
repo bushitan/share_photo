@@ -1,0 +1,19 @@
+/* pages/customer/customer.wxss */
+.page{
+    padding: 15px;
+    background-color:#fefefe;
+}
+
+.flex{
+    display: flex;
+    justify-content: space-between;
+}
+.footer{
+    z-index: 999999;
+    background-color: #ffffff;
+    position: fixed;
+    bottom:0;
+    width: 750rpx;
+    padding: 15px;
+    border:1rpx solid #eee;
+}

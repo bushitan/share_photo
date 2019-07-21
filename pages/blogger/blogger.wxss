@@ -1,0 +1,8 @@
+/* pages/blogger/blogger.wxss */
+page{
+    background-color: #eee;
+}
+.page {
+    padding: 12px 0;
+    /* height: 12px; */
+}

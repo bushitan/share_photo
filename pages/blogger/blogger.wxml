@@ -1,0 +1,11 @@
+<!--pages/blogger/blogger.wxml-->
+<view class="page">
+    <brickLayout
+    dataSet="{{dataSet}}"
+    option="{{brick_option}}"
+    bind:tapCard="tapCard"
+    bind:tapLike="tapLike"
+    bind:tapUser="tapUser"
+    bind:onCardExpanded="onCardExpanded"
+    />
+</view>
