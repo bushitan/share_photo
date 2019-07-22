@@ -51,7 +51,7 @@ Page({
             columns: 2,
             imageFillMode: 'widthFix',
             icon: {
-                fill: 'https://github.githubassets.com/images/icons/emoji/unicode/1f330.png',
+                fill: '../../images/love.png',
                 default: 'https://ci.xiaohongshu.com/49fbd3cd-02d4-41f1-b27c-708e5fe8dac3'
             },
             fontColor: '#000'
