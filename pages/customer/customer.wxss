@@ -6,14 +6,17 @@
 
 .flex{
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+}
+button{
+    margin: 10px 10px 0 0;
 }
 .footer{
     z-index: 999999;
     background-color: #ffffff;
-    position: fixed;
+    /* position: fixed; */
     bottom:0;
-    width: 750rpx;
+    /* width: 750rpx; */
     padding: 15px;
     border:1rpx solid #eee;
 }

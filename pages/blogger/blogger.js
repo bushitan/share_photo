@@ -20,7 +20,7 @@ Page({
                 liked: false,
                 user: {
                     avatar: '../../images/menu_address.png',
-                    username: 'Minya Chan',
+                    username: '禾末',
                     userId: '1'
                 },
                 images: [
@@ -36,7 +36,7 @@ Page({
                 liked: true,
                 user: {
                     avatar: 'https://img.xiaohongshu.com/avatar/5bd88e91111e9f00017312a2.jpg@80w_80h_90q_1e_1c_1x.jpg',
-                    username: 'Minya Chan',
+                    username: '魏阿未',
                     userId: '1'
                 },
                 images: [

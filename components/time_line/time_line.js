@@ -33,5 +33,10 @@ Component({
                 urls: [e.currentTarget.dataset.url],
             })
         },
+        share(e){
+            wx.previewImage({
+                urls: [e.currentTarget.dataset.url],
+            })
+        },
     }
 })

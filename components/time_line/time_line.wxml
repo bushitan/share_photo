@@ -13,7 +13,8 @@
                     <image class="cover" src="{{item.image}}" mode="widthFix" 
                         catchtap="preview" data-url="{{item.image}}"></image>
                     <view class="btn">
-                        <button size="mini">分享</button>
+                        <button size="mini" 
+                            catchtap='share' data-url="{{item.share_image}}">分享</button>
                     </view>
                 </view>
             </view>

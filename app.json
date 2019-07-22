@@ -4,6 +4,7 @@
         "pages/article/article",
         "pages/blogger/blogger",
         "pages/seller/seller",
+        "pages/qrcode/qrcode",
         "pages/customer/customer"
     ],
     "window": {

@@ -1,5 +1,14 @@
 <!--pages/customer/customer.wxml-->
 
+<view class="footer">
+    <view>集齐30个分享，到年卡办理点兑换小礼物</view>
+    <!-- <view> -->
+    <view class='flex'>
+        <button size="mini" catchtap='toQR' type='primary'>兑换</button>
+        <button size="mini">示意图</button>
+    </view>
+    <!-- </view> -->
+</view>
 <view class="page">
     <!-- <view>分享数集齐30个，到年卡办理点兑换小礼物</view>
     <button >兑换</button> -->
@@ -14,9 +23,3 @@
 
 </view>
 <view style="height:50px;"></view>
-<view class="flex footer">
-    <view>分享数集齐30个，到年卡办理点兑换小礼物</view>
-    <!-- <view> -->
-            <button size="mini">兑换</button>
-    <!-- </view> -->
-</view>
