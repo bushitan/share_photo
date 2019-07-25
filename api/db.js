@@ -1,14 +1,14 @@
 
 var API = require('api.js')
 var IS_CUSTOMER = true
-class db {
+class DB {
     constructor() {
     }
     // 封装基础的请求
     base(options){
         return new Promise((resolve, reject) => {
             var data = options.data || {}
-            // data['customer_uuid'] = wx.getStorageSync(API.UUID)
+            data['uuid'] = wx.getStorageSync(API.UUID)
             wx.request({
                 url: options.url,
                 method: options.method || "POST",
@@ -34,35 +34,139 @@ class db {
             this.base({
                 url: url,
                 data:data || {}
-            }).then(res => resolve(res.data))
+            })
+            .then(res => resolve(res.data))
+            .catch(res => reject(res))
         })
     }
 
 
-    // 获取店铺列表
-    index() {
-        return this.baseURL(API.INDEX)
+    // 获取微信code
+    getWXCode() {
+        return new Promise((resolve, reject) => {
+            wx.login({
+                success(res) { resolve(res.code) },
+                fail(res) { return reject(res) }
+            })
+        })
     }
-    // 获取店铺列表
-    searchPOIList(tag_uuid) {
-        return this.baseURL(API.SEARCH_POI_LIST, { tag_uuid: tag_uuid })
-    }
-    // 获取店铺详情
-    searchPOIDetail(poi_id) {
-        return this.baseURL(API.SEARCH_POI_DETAIL, { poi_id: poi_id })
-    }
-    // 获取店铺列表
-    searchArticleDetail(article_uuid) {
-        return this.baseURL(API.SEARCH_ARTICLE_DETAIL, { article_uuid: article_uuid })
+
+    /****业务详情****/
+    // 1 用户登录认证
+    login() {
+        return new Promise((resolve, reject) => {
+            // API 
+            this.getWXCode().then(code => {
+                // API 
+                this.baseURL( API.SYSTEM_LOGIN, { code: code} )
+                .then(res => resolve(res.data.data))
+            })
+        })
     }
 
 
-    // 根据店铺id，获取poi_list
-    searchPOIStore(store_id) {
-        return this.baseURL(API.SEARCH_POI_STORE, { store_id: store_id })
+    // 1 系统设置用户信息
+    systemSetUserInfo(userInfo) {
+        return this.baseURL(API.SYSTEM_SET_USER_INFO, userInfo)
     }
+
+    /***********文章API*************/
+    // 2 获取文章列表
+    articleGetList() {
+        return this.baseURL(API.ARTICLE_GET_LIST)
+    }
+    // 2 获取文章内容
+    articleGetLDetail(article_id) {
+        return this.baseURL(API.ARTICLE_GET_DETAIL, { article_id: article_id})
+    }
+
+
+    /***********用户API*************/
+    /**
+     * @method 获取用户信息
+     * @return
+     *      count_score 已经获取积分数量
+     */
+    customerGetUserInfo() {
+        return this.baseURL(API.CUSTOMER_GET_USER_INFO)
+    }
+    /**
+     * @method 获取用户的照片列表
+     * @return
+     *      photo_list 照片列表
+     */
+    customerGetPhotoList() {
+        return this.baseURL(API.CUSTOMER_GET_PHOTO_LIST)
+    }
+    /**
+     * @method 获取七牛token
+     * @return
+     *      token 上传值
+     */
+    customerGetToken() {
+        return this.baseURL(API.CUSTOMER_GET_TOKEN)
+    }
+
+    /**
+     * TODO 
+     * @method 照片上传七牛云
+     */
+
+    /**
+     * @method 保存照片
+     * @param
+     *      image_url 已上传链接
+     */
+    customerAddPhoto(image_url) {
+        return this.baseURL(API.CUSTOMER_ADD_PHOTO, { image_url: image_url })
+    }
+    /**
+     * @method 点赞
+     * @param
+     *      article_id 点赞的文章id
+     */
+    customerAddLike(article_id) {
+        return this.baseURL(API.CUSTOMER_ADD_LIKE, { article_id: article_id })
+    }
+
+    /**
+     * @method 还有助力
+     * @param
+     *      customer_id 要助力的id
+     */
+    customerAddHelp(customer_id) {
+        return this.baseURL(API.CUSTOMER_ADD_HELP, { customer_id: customer_id })
+    }
+
+    
+
+    
+
+    // SELLER_ADD_CHECK: `${URL}seller/add/check/`,// #店家核销
+    //     SELLER_GET_LIST: `${URL}seller/get/check_list/`,//#店家获取核销列表
+    /***********商家API*************/
+    /**
+     * @method 获取用户信息
+     * @return
+     *      count_score 已经获取积分数量
+     */
+    sellerAddCheck(customer_uuid) {
+        return this.baseURL(API.SELLER_ADD_CHECK, { customer_uuid: customer_uuid})
+    }
+    /**
+     * @method 获取用户信息
+     * @return
+     *      count_score 已经获取积分数量
+     */
+    sellerGetList(page_num, range) {
+        return this.baseURL(API.SELLER_GET_LIST, { page_num: page_num, range:range})
+    }
+
 
 }
+
+
+var db = new DB()
 
 module.exports = db
 

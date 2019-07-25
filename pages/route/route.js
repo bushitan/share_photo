@@ -1,8 +1,7 @@
 // pages/user/user.js
 var GP
 var API = require('../../api/api.js')
-var DB = require('../../api/db.js')
-var db = new DB()
+var db = require('../../api/db.js')
 
 var RouteUtils = require('routeUtils.js')
 var routeUtils
@@ -14,7 +13,7 @@ Page({
      * 页面的初始数据
      */
     data: {
-        isShowLogin:false,
+        isShowLogin:!false,
     },
 
     /**
@@ -23,14 +22,42 @@ Page({
     onLoad: function (options) {
         console.log(options)
         GP = this
-        wx.showLoading({
-            title: '加载中...',
-        }) 
-        routeUtils = new RouteUtils(GP, APP)
-        routeUtils.toBlogger()
+        // wx.showLoading({
+        //     title: '加载中...',
+        // }) 
+
+        // routeUtils = new RouteUtils(GP, APP)
+        // routeUtils.toBlogger()
         // routeUtils.getMode(options)
-      
+        GP.test()
     },    
+
+
+    test() {
+        db.articleGetList()
+        db.articleGetLDetail(1)
+
+        db.customerGetUserInfo()
+        db.customerGetPhotoList()
+        db.customerGetToken()
+        db.customerAddPhoto("https:test.com")
+        db.customerAddLike(1)
+        db.customerAddHelp(1)
+
+        db.sellerAddCheck("1cff3e06-adf7-11e9-b8ce-e95aa2c51b5d")
+        db.sellerGetList(0,10)
+    },
+
+
+    //获取\更新用户头像信息
+    onGetUserInfo: function (e) {
+        if (!this.logged && e.detail.userInfo) {
+            db.systemSetUserInfo(e.detail.userInfo)
+        }
+    },
+
+
+
 
     // navToPOI(mode, poiID){
     //     wx.redirectTo({

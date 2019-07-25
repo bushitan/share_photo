@@ -1,21 +1,12 @@
 
 
 
-var APP_ID = "wxd2f409241725502b"
-// var host_url = 'https://xcx.308308.com/huaxun_2/api/';
-// var API_308_URL = 'https://api.308308.com/';
-// var XCX_308_URL = 'http://127.0.0.1:8000/live/';
-// var XCX_308_URL = 'http://192.168.199.203:8000/live/';
-// var XCX_308_URL = 'https://www.12xiong.top/live/';
-// request.init(XCX_308_URL + 'lite/login/', APP_ID)
+var APP_ID = "wxc3cb221202af930a"
 
-
-// var HOST = "https://www.51zfgx.com/"  // 第2正式版本
-// var HOST = "https://www.51zfgx.com/coffee_server_2019_6_15_v1_3_10/" //第2正式版本
-var HOST = "https://www.51zfgx.com/coffee_server_2019_7_12_v1_5_2/" //第2正式版本
+var HOST = "http://www.51zfgx.com:1100/dev/" //第2正式版本
 
 // var HOST = "https://www.51zfgx.com/dev/" //测试版本
-var URL = HOST + "map/"
+var URL = HOST + "photo/"
 
 module.exports = {
     UUID: "uuid",
@@ -26,12 +17,20 @@ module.exports = {
     UNION_ID: "union_id",
 
 
-    INDEX: `${URL}index/`,
-    SEARCH_POI_LIST: `${URL}search/poi/list/`,
-    SEARCH_POI_DETAIL: `${URL}search/poi/detail/`,
-    SEARCH_ARTICLE_DETAIL: `${URL}search/article/detail/`,
-    SEARCH_POI_STORE: `${URL}search/poi/store/`, // 根据store_id 获取 poi_list
+    SYSTEM_LOGIN: `${URL}system/login/`,
+    SYSTEM_SET_USER_INFO: `${URL}system/set/user_info/`, 
+    ARTICLE_GET_LIST: `${URL}article/get/list/`,    //#获取标签，文章列表
+    ARTICLE_GET_DETAIL: `${URL}article/get/detail/`,//#获取文章详情
+    CUSTOMER_GET_USER_INFO: `${URL}customer/get/user_info/`, //#获取当天的分数和礼物领取情况
+    CUSTOMER_GET_PHOTO_LIST: `${URL}customer/get/photo_list/`,//#获取获取照片墙列表
+    CUSTOMER_GET_TOKEN: `${URL}customer/get/token/`,//#获取七牛云的token
+    CUSTOMER_ADD_PHOTO: `${URL}customer/add/photo/`,//#增加照片
+    CUSTOMER_GET_QR: `${URL}customer/get/qr/`, //#获取分享二维码
+    CUSTOMER_ADD_LIKE: `${URL}customer/add/like/`, //#点赞
+    CUSTOMER_ADD_HELP: `${URL}customer/add/help/`, //#好友助力
 
+    SELLER_ADD_CHECK: `${URL}seller/add/check/`,// #店家核销
+    SELLER_GET_LIST: `${URL}seller/get/check_list/`,//#店家获取核销列表
     
 }
 

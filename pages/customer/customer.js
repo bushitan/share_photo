@@ -16,7 +16,7 @@ Page({
             summary: "阿瓦隆",
             start_time: "2019-7-18 15:25:36",
             image: "https://ci.xiaohongshu.com/6bc52795-c599-3c27-bacc-a20a33054ff6?imageView2/2/w/828/q/82/format/jpg",
-            share_image:"../../images/user_detail.jpg"
+            share_image:"https://raw.githubusercontent.com/bushitan/share_photo/master/images/share.jpg"
         },]
     },
 

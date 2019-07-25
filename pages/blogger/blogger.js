@@ -1,8 +1,7 @@
 // pages/blogger/blogger.js
 var GP
 var API = require('../../api/api.js')
-var DB = require('../../api/db.js')
-var db = new DB()
+var db = require('../../api/db.js')
 
 Page({
 
@@ -13,7 +12,7 @@ Page({
         dataSet: [
             {
                 id: '1',
-                content: '',
+                content: '泰过的面包房可好吃了[详情..]',
                 backgroundColor: '#ffffff',
                 time: 1533106010,
                 likedCount: 0,
@@ -29,10 +28,10 @@ Page({
             },
             {
                 id: '2',
-                content: '',
+                content: '网红拍照泼水节[详情..]',
                 backgroundColor: '#ffffff',
                 time: 1533106010,
-                likedCount: 0,
+                likedCount: 1,
                 liked: true,
                 user: {
                     avatar: 'https://img.xiaohongshu.com/avatar/5bd88e91111e9f00017312a2.jpg@80w_80h_90q_1e_1c_1x.jpg',
@@ -51,7 +50,7 @@ Page({
             columns: 2,
             imageFillMode: 'widthFix',
             icon: {
-                fill: '../../images/love.png',
+                fill: 'https://raw.githubusercontent.com/bushitan/share_photo/master/images/love.png',
                 default: 'https://ci.xiaohongshu.com/49fbd3cd-02d4-41f1-b27c-708e5fe8dac3'
             },
             fontColor: '#000'
