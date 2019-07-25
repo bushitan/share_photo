@@ -150,8 +150,8 @@ class DB {
      * @return
      *      count_score 已经获取积分数量
      */
-    sellerAddCheck(customer_uuid) {
-        return this.baseURL(API.SELLER_ADD_CHECK, { customer_uuid: customer_uuid})
+    sellerAddCheck(customer_id) {
+        return this.baseURL(API.SELLER_ADD_CHECK, { customer_id: customer_id})
     }
     /**
      * @method 获取用户信息

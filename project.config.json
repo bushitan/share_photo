@@ -40,7 +40,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 1,
+			"current": 4,
 			"list": [
 				{
 					"id": -1,
@@ -53,6 +53,27 @@
 					"id": -1,
 					"name": "customer",
 					"pathName": "pages/customer/customer",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "blogger",
+					"pathName": "pages/blogger/blogger",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "seller",
+					"pathName": "pages/seller/seller",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "article",
+					"pathName": "pages/article/article",
 					"scene": null
 				}
 			]

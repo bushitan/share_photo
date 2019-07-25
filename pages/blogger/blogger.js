@@ -54,15 +54,37 @@ Page({
                 default: 'https://ci.xiaohongshu.com/49fbd3cd-02d4-41f1-b27c-708e5fe8dac3'
             },
             fontColor: '#000'
-        }
+        },
+
+
+        
+        articleList:[], //文章列表
+        tagList:[], //标签列表
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-
+        GP = this 
+        GP.onInit()
     },
+
+    /**
+     * @method 页面初始化
+     */
+    onInit(){
+        db.articleGetList().then(res => {
+            // console.log(res)
+            GP.setData({
+                articleList: res.data.article_list,
+                tagList: res.data.tag_list,
+            })
+        })
+    },
+
+
+
 
 
     tapCard: function (event) {

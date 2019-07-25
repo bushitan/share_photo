@@ -4,14 +4,14 @@
             <view class='xx_p_t15 xx_p_lr15'>
                 <view class='xx_flex' style='margin-left:-10px;'>
                     <view class='point'></view>
-                    <view class='xx_f_10 '>{{item.start_time}}</view>
+                    <view class='xx_f_10 '>{{item.create_time}}</view>
                 </view>
                 <view class='content' catchtap='click' data-index="{{index}}">
                     <!-- <view class='xx_agenda__title'>{{item.title}}</view>
                     <view class='xx_f_9 xx_m_t6'>{{item.summary}}</view>
                     <view class='xx_f_7 xx_m_t8'>{{item.start_time}} - {{item.end_time}}  | {{item.des}}</view> -->
-                    <image class="cover" src="{{item.image}}" mode="widthFix" 
-                        catchtap="preview" data-url="{{item.image}}"></image>
+                    <image class="cover" src="{{item.photo_url}}" mode="widthFix" 
+                        catchtap="preview" data-url="{{item.photo_url}}"></image>
                     <view class="btn">
                         <button size="mini" 
                             catchtap='share' data-url="{{item.share_image}}">分享</button>

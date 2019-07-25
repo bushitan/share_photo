@@ -34,9 +34,11 @@ Component({
             })
         },
         share(e){
+            // TODO 把share事件放到外边
             wx.previewImage({
                 urls: [e.currentTarget.dataset.url],
             })
         },
+        
     }
 })

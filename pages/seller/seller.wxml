@@ -1,2 +1,4 @@
 <!--pages/seller/seller.wxml-->
 <text>pages/seller/seller.wxml</text>
+
+<button catchtap="scan">扫码核销</button>

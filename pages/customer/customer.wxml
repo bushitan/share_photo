@@ -22,4 +22,6 @@
     ></time_line>
 
 </view>
+
+<button catchtap="addImage">添加图片</button>
 <view style="height:50px;"></view>
