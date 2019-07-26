@@ -1,6 +1,7 @@
 {
     "usingComponents": {
         "user_detail": "../../components/user_detail/user_detail",
+        "ai_make": "../../components/ai_make/ai_make",
         "time_line":"../../components/time_line/time_line"
     }
 }

@@ -12,9 +12,11 @@ module.exports = {
     UUID: "uuid",
     USER_ID: "user_id",
     USER_INFO: "user_info",
+    USER_QR:"user_qr",
     OPEN_ID: "open_id",
     APP_ID: "app_id",
     UNION_ID: "union_id",
+
 
 
     SYSTEM_LOGIN: `${URL}system/login/`,

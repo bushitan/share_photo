@@ -14,7 +14,7 @@
                         catchtap="preview" data-url="{{item.photo_url}}"></image>
                     <view class="btn">
                         <button size="mini" 
-                            catchtap='share' data-url="{{item.share_image}}">分享</button>
+                            catchtap='share' data-url="{{item.photo_url}}">分享</button>
                     </view>
                 </view>
             </view>

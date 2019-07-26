@@ -120,6 +120,16 @@ class DB {
     customerAddPhoto(image_url) {
         return this.baseURL(API.CUSTOMER_ADD_PHOTO, { image_url: image_url })
     }
+
+
+    /**
+     * @method 获取我的二维码
+     */
+    customerGetQR() {
+        return this.baseURL(API.CUSTOMER_GET_QR)
+    }
+    
+
     /**
      * @method 点赞
      * @param

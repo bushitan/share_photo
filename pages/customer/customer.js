@@ -3,6 +3,21 @@ var GP
 var API = require('../../api/api.js')
 var db = require('../../api/db.js')
 var APP = getApp()
+
+var customerUtils = require('customer_utils.js')
+const qiniuUploader = require("../../utils/qiniuUploader");
+// 初始化七牛相关参数
+// function initQiniu() {
+//     var options = {
+//         region: 'ECN', // 华东区
+//         uptokenURL: 'https://[yourserver.com]/api/uptoken',
+//         // uptoken: 'xxxx=',
+//         domain: 'http://[yourBucketId].bkt.clouddn.com',
+//         shouldUseQiniuFileName: false
+//     };
+//     qiniuUploader.init(options);
+// }
+
 Page({
 
     /**
@@ -23,10 +38,10 @@ Page({
             start_time: "2019-7-18 15:25:36",
             image: "https://ci.xiaohongshu.com/6bc52795-c599-3c27-bacc-a20a33054ff6?imageView2/2/w/828/q/82/format/jpg",
             share_image:"https://raw.githubusercontent.com/bushitan/share_photo/master/images/share.jpg"
-        },]
+        },],
 
 
-
+        shareCover:null, //分享海报信息
 
     },
 
@@ -35,6 +50,8 @@ Page({
      */
     onLoad: function (options) {
         GP = this
+
+        wx.setStorageSync("uuid", "1cff3e06-adf7-11e9-b8ce-e95aa2c51b5d")
         GP.onInit()
     },
 
@@ -63,29 +80,64 @@ Page({
      * @method 添加图片
      */
     addImage(){
-        db.customerGetToken().then(res =>{
-            //TODO 上传七牛云
+        // initQiniu();
+        // 微信 API 选文件
+        wx.chooseImage({
+            count: 1,
+            sizeType: ['compressed'],
+            success: function (res) {
+                var filePath = res.tempFilePaths[0];
 
-            console.log("get token:",res)
-            db.customerAddPhoto("https:test.com").then( res=>{
-                var code = res.message.code
-                // if (code = APP.MESSAGE.USER_ADD_SUCCESS){
-                    
-                // }
-
-                wx.showModal({
-                    title: res.message.title,
-                    content: res.message.content,
+                wx.compressImage({
+                    src: filePath, // 图片路径
+                    quality: 80, // 压缩质量
+                    success(res){
+                        debugger
+                        var tempFilePath = res.tempFilePath
+                        db.customerGetToken().then(res => {
+                            // console.log(res.data.token)
+                            Uploader(tempFilePath, res.data.key, res.data.token)
+                        })
+                    },
                 })
-
-            }) 
+            }
         })
         
     },
 
 
-
-
+    /**
+     * @method 点击分享按钮
+     */
+    share(e){
+        wx.showLoading({
+            title: '合成中',
+        })
+        var share_image = e.detail
+        if (wx.getStorageSync(API.USER_QR) == "")
+            db.customerGetQR()
+            .then(res => {
+                console.log(res.data.qr_base64)
+                var user_qr = res.data.qr_base64
+                wx.setStorageSync(API.USER_QR, user_qr)
+                GP.makeShareCover(share_image, user_qr)
+            })
+        else
+            GP.makeShareCover(share_image, wx.getStorageSync(API.USER_QR))
+        
+    },
+    /**
+     * 封装分享海报信息
+     */
+    makeShareCover(share_image, user_qr){
+        GP.setData({
+            shareCover:{
+                shareImage: share_image,
+                userQR: user_qr,
+                slugImage:'../../images/cavasn_slug.jpg'
+            }
+        })
+    },
 
 
 
@@ -101,3 +153,43 @@ Page({
 
     }
 })
+
+// qiniu/share_photo_image/fang_te/1_2019_07_26_10_08_42.jpg
+
+function Uploader(filePath,key,uptoken){
+    // 交给七牛上传
+    // debugger
+    qiniuUploader.upload(filePath, (res) => {
+        console.log('file url is: ' + res.fileUrl)
+
+        // 增加记录
+        db.customerAddPhoto(res.fileUrl).then( res=>{
+            var code = res.message.code
+            wx.showModal({
+                title: res.message.title,
+                content: res.message.content,
+            })
+            GP.onInit()
+        }) 
+
+
+    }, (error) => {
+        console.error('error: ' + JSON.stringify(error));
+    },
+        {
+            region: 'ECN', // 华北区
+            uptoken: uptoken,
+            // uptokenURL: 'https://[yourserver.com]/api/uptoken',
+            domain: 'https://www.51zfgx.com',
+            // shouldUseQiniuFileName: false
+            key: key
+            // uptokenURL: 'myServer.com/api/uptoken'
+        },
+        // null,// 可以使用上述参数，或者使用 null 作为参数占位符
+        (progress) => {
+            console.log('上传进度', progress.progress)
+            console.log('已经上传的数据长度', progress.totalBytesSent)
+            console.log('预期需要上传的数据总长度', progress.totalBytesExpectedToSend)
+        }, cancelTask => GP.setData({ cancelTask })
+    );
+}

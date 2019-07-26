@@ -19,9 +19,18 @@
 
     <time_line
         list="{{photoList}}"
+        catch:share="share"
     ></time_line>
 
 </view>
 
 <button catchtap="addImage">添加图片</button>
 <view style="height:50px;"></view>
+
+
+<ai_make 
+    create="{{shareCover}}" 
+></ai_make>
+
+    <!-- width="{{width}}"
+    height="{{height}}" -->
