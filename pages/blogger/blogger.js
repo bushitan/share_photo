@@ -2,6 +2,7 @@
 var GP
 var API = require('../../api/api.js')
 var db = require('../../api/db.js')
+var pack = require('pack.js')
 
 Page({
 
@@ -9,57 +10,15 @@ Page({
      * 页面的初始数据
      */
     data: {
-        dataSet: [
-            {
-                id: '1',
-                content: '泰过的面包房可好吃了[详情..]',
-                backgroundColor: '#ffffff',
-                time: 1533106010,
-                likedCount: 0,
-                liked: false,
-                user: {
-                    avatar: '../../images/menu_address.png',
-                    username: '禾末',
-                    userId: '1'
-                },
-                images: [
-                    'https://ci.xiaohongshu.com/945360ed-be19-356e-b1fd-b41da9850146?imageView2/2/w/828/q/82/format/jpg'
-                ]
-            },
-            {
-                id: '2',
-                content: '网红拍照泼水节[详情..]',
-                backgroundColor: '#ffffff',
-                time: 1533106010,
-                likedCount: 1,
-                liked: true,
-                user: {
-                    avatar: 'https://img.xiaohongshu.com/avatar/5bd88e91111e9f00017312a2.jpg@80w_80h_90q_1e_1c_1x.jpg',
-                    username: '魏阿未',
-                    userId: '1'
-                },
-                images: [
-                    'https://ci.xiaohongshu.com/6bc52795-c599-3c27-bacc-a20a33054ff6?imageView2/2/w/828/q/82/format/jpg',
-                ]
-            }, 
-        ],
-        brick_option: {
-            defaultExpandStatus: true,
-            backgroundColor: '#ffffff',
-            forceRepaint: false,
-            columns: 2,
-            imageFillMode: 'widthFix',
-            icon: {
-                fill: 'https://www.51zfgx.com/qiniu/share_photo_image/fang_te/1_2019_07_26_10_14_17.jpg',
-                default: 'https://ci.xiaohongshu.com/49fbd3cd-02d4-41f1-b27c-708e5fe8dac3'
-            },
-            fontColor: '#000'
-        },
+        articleList:[],
+        brick_option: pack.option,
 
 
         
         articleList:[], //文章列表
         tagList:[], //标签列表
+        dataSet:[], // 显示的文章
+        likeList:[],
     },
 
     /**
@@ -74,31 +33,96 @@ Page({
      * @method 页面初始化
      */
     onInit(){
+        // 获取文章列表
         db.articleGetList().then(res => {
             // console.log(res)
             GP.setData({
                 articleList: res.data.article_list,
                 tagList: res.data.tag_list,
             })
+            GP.setShowArticle(res.data.tag_list[0].id)
+
+            // 获取点赞列表
+            db.customerGetLikeList().then(res => {
+                GP.setData({
+                    likeList: res.data.like_list,
+                })
+                GP.setLikeArticle()
+            })
         })
+
+      
     },
 
 
+    /**
+     * @method 文章设置点赞
+     */
+    setLikeArticle(){        
+        GP.setData({
+            dataSet: pack.like(GP.data.dataSet, GP.data.likeList)
+        })
+    },
 
+    /**
+     * @method 根据tag显示文章
+     */
+    setShowArticle(tag_id){
+        var artilce_list = GP.data.articleList
+
+        var list = pack.article(artilce_list, tag_id)
+        GP.setData({
+            dataSet: list
+        })
+    },
+
+    /**
+     * @method 点击tab
+     */
+    clickTab(e){
+        var index = e.detail
+        GP.setShowArticle(GP.data.tagList[index].id)
+        GP.setLikeArticle()
+    },
 
 
     tapCard: function (event) {
         const cardId = event.detail.card_id
-        // code here.
-        console.log('tap card!')
+        var article = pack.getArticleByID(GP.data.articleList, cardId)
         wx.navigateTo({
-            url: '/pages/article/article',
+            url: '/pages/article/article?url=' + article.url,
         })
     },
+
+    /**
+     * @method 点赞事件
+     */
     tapLike: function (event) {
         const cardId = event.detail.card_id
-        // code here.
-        console.log('tap like!')
+        var card = pack.getArticleByID(GP.data.dataSet, cardId)
+        // 可以点赞
+        if (card.liked ){
+            wx.showToast({
+                title: '已点赞',
+            })
+        } else{
+            db.customerAddLike(cardId).then(res=>{
+                console.log(res)
+            })
+
+            var likeList = GP.data.likeList
+            var temp = {
+                article_id: cardId,
+                // user_id	: 1,
+                id: 2,
+            }
+            likeList.push(temp)
+            GP.setData({ likeList: likeList})
+            GP.setLikeArticle()
+        }
+            
+
+
     },
     tapUser: function (event) {
         const userId = event.detail.user_id

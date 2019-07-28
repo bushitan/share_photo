@@ -1,6 +1,8 @@
 <!--pages/article/article.wxml-->
 
-<swiper 
+<web-view src="{{url}}"></web-view>
+
+<!-- <swiper 
     indicator-dots="{{indicatorDots}}"
     indicator-color="rgba(255,255,255,0.3)"
     indicator-active-color="rgba(255,255,255,0.7)"
@@ -21,4 +23,4 @@
         > 
     </user_info>
     <rich-text nodes="{{content}}" space="true"></rich-text>
-</view>
+</view> -->

@@ -28,6 +28,7 @@ module.exports = {
     CUSTOMER_GET_TOKEN: `${URL}customer/get/token/`,//#获取七牛云的token
     CUSTOMER_ADD_PHOTO: `${URL}customer/add/photo/`,//#增加照片
     CUSTOMER_GET_QR: `${URL}customer/get/qr/`, //#获取分享二维码
+    CUSTOMER_GET_LIKE_LIST: `${URL}customer/get/like_list/`, //#点赞
     CUSTOMER_ADD_LIKE: `${URL}customer/add/like/`, //#点赞
     CUSTOMER_ADD_HELP: `${URL}customer/add/help/`, //#好友助力
 

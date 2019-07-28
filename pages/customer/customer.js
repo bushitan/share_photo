@@ -32,13 +32,15 @@ Page({
         
         countScore:0,//积分
 
-        photoList: [{
-            title: "阿瓦隆",
-            summary: "阿瓦隆",
-            start_time: "2019-7-18 15:25:36",
-            image: "https://ci.xiaohongshu.com/6bc52795-c599-3c27-bacc-a20a33054ff6?imageView2/2/w/828/q/82/format/jpg",
-            share_image:"https://raw.githubusercontent.com/bushitan/share_photo/master/images/share.jpg"
-        },],
+        photoList: [
+        //     {
+        //     title: "阿瓦隆",
+        //     summary: "阿瓦隆",
+        //     start_time: "2019-7-18 15:25:36",
+        //     image: "https://ci.xiaohongshu.com/6bc52795-c599-3c27-bacc-a20a33054ff6?imageView2/2/w/828/q/82/format/jpg",
+        //     share_image:"https://raw.githubusercontent.com/bushitan/share_photo/master/images/share.jpg"
+        // },
+        ],
 
 
         shareCover:null, //分享海报信息
@@ -88,18 +90,25 @@ Page({
             success: function (res) {
                 var filePath = res.tempFilePaths[0];
 
-                wx.compressImage({
-                    src: filePath, // 图片路径
-                    quality: 80, // 压缩质量
-                    success(res){
-                        debugger
-                        var tempFilePath = res.tempFilePath
-                        db.customerGetToken().then(res => {
-                            // console.log(res.data.token)
-                            Uploader(tempFilePath, res.data.key, res.data.token)
-                        })
-                    },
+                // 上传图片
+                db.customerGetToken().then(res => {
+                    // console.log(res.data.token)
+                    Uploader(filePath, res.data.key, res.data.token)
                 })
+
+                // 图片压缩
+                // wx.compressImage({
+                //     src: filePath, // 图片路径
+                //     quality: 80, // 压缩质量
+                //     success(res){
+                //         debugger
+                //         var tempFilePath = res.tempFilePath
+                //         db.customerGetToken().then(res => {
+                //             // console.log(res.data.token)
+                //             Uploader(tempFilePath, res.data.key, res.data.token)
+                //         })
+                //     },
+                // })
             }
         })
         

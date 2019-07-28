@@ -1,11 +1,23 @@
 
 
-<view hidden='{{!isShowLogin}}'>
+<!-- <view hidden='{{!isShowLogin}}'>
     <view style='height:30px;'></view>
     <view class='box'>
         <image class='userinfo-avatar' src='../../images/user-unlogin.png'></image>
     </view>
     <view class='login'>
         <button size='mini' type='primary'  open-type="getUserInfo" bindgetuserinfo="onGetUserInfo">登录</button>
+    </view>
+</view> -->
+
+<view hidden='{{!isRelogin}}'>
+    <view style='height:150px;'></view>
+    <view class='login'>
+    <button 
+        size='mini' 
+        type='primary'  
+        open-type="getUserInfo" 
+        bindgetuserinfo="onGetUserInfo"
+        >网络问题，请重试</button>
     </view>
 </view>

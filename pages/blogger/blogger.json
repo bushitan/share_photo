@@ -1,5 +1,6 @@
 {
     "usingComponents": {
+        "tab": "../../components/xx_tab/xx_tab",
         "brickLayout": "plugin://brickLayout/brickLayout"
     }
 }

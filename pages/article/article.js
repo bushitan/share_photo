@@ -37,13 +37,14 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-
-        GP = this
-        db.articleGetLDetail(1).then(res=>{
-            GP.setData({
-                articleDetail:res.data.article_detail
-            })
-        })
+        console.log(options.url)
+        this.setData({url:options.url})
+        // GP = this
+        // db.articleGetLDetail(1).then(res=>{
+        //     GP.setData({
+        //         articleDetail:res.data.article_detail
+        //     })
+        // })
     },
 
     /**

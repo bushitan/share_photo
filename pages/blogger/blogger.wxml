@@ -1,4 +1,7 @@
 <!--pages/blogger/blogger.wxml-->
+<view class='tab'>
+    <tab mode="menu" list="{{tagList}}" catchclick="clickTab" initindex="0" colorselect="#187bbf" ></tab>
+</view>
 <view class="page">
     <brickLayout
     dataSet="{{dataSet}}"

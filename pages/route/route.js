@@ -14,6 +14,8 @@ Page({
      */
     data: {
         isShowLogin:!false,
+
+        isRelogin:false,
     },
 
     /**
@@ -25,11 +27,24 @@ Page({
         // wx.showLoading({
         //     title: '加载中...',
         // }) 
+        wx.showLoading({
+            title: 'loading...',
+        })
 
-        // routeUtils = new RouteUtils(GP, APP)
-        // routeUtils.toBlogger()
-        // routeUtils.getMode(options)
-        GP.test()
+        db.login().then(res=>{
+            wx.hideLoading()
+            // debugger
+            if (res.message.code == APP.MESSAGE.SYS_SUCCESS){
+                wx.switchTab({
+                    url: '/pages/blogger/blogger',
+                })
+            }else{
+                wGP.setData({
+                    isRelogin:true,
+                })
+            }
+        })
+        // GP.test()
     },    
 
 

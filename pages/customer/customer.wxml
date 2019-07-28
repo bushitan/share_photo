@@ -24,7 +24,13 @@
 
 </view>
 
-<button catchtap="addImage">添加图片</button>
+<view class="upload">
+    <view class="btn" catchtap="addImage">
+        <image src="../../images/btn_upload.png"></image>
+    </view>
+</view>
+
+<!-- <button catchtap="addImage">添加图片</button> -->
 <view style="height:50px;"></view>
 
 

@@ -59,7 +59,8 @@ class DB {
             this.getWXCode().then(code => {
                 // API 
                 this.baseURL( API.SYSTEM_LOGIN, { code: code} )
-                .then(res => resolve(res.data.data))
+                .then(res => resolve(res))
+                .catch(res => reject(res))
             })
         })
     }
@@ -130,6 +131,13 @@ class DB {
     }
     
 
+    /**
+     * @method 点赞列表
+     */
+    customerGetLikeList() {
+        return this.baseURL(API.CUSTOMER_GET_LIKE_LIST)
+    }
+    
     /**
      * @method 点赞
      * @param
