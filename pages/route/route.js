@@ -34,6 +34,9 @@ Page({
         db.login().then(res=>{
             wx.hideLoading()
             // debugger
+            console.log(res)
+            wx.setStorageSync(API.USER_INFO, res.data.user_info)
+            wx.setStorageSync(API.UUID, res.data.user_info.uuid)
             if (res.message.code == APP.MESSAGE.SYS_SUCCESS){
                 wx.switchTab({
                     url: '/pages/blogger/blogger',

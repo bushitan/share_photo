@@ -14,7 +14,11 @@
 page{
     font-size: 11pt;
 }
+.header{
 
+    background-color:#fff;
+    padding: 0 0 15px;
+}
 .flex{
     display: flex;
     justify-content: center;
@@ -25,9 +29,59 @@ page{
 }
 
 
-.user_logo{
-    border-radius: 50%;
-    width: 72px;
-    height: 72px;
-    margin:10px 0;
+.title{
+    font-size: 13pt;
+    font-weight: bolder;
+    text-align: center;
+    line-height: 40px;
+}
+
+.summary{
+    /* text-align: center; */
+    font-size: 10pt;
+    color:#888;
+    padding: 0 15px;
+    line-height: 25px;
+}
+.mark{
+    font-size: 13pt;
+    font-weight: bolder;
+    color: #efaf30;
+}
+
+
+.upload{
+    /* position: fixed;
+    width:100%;
+    bottom: 10px; */
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+.upload .camera{
+    background-color: #efaf30 !important;
+    margin-right: 20px;
+}
+.upload .btn{
+    background-color: #1d2a6d;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding:3px  10px;
+    border-radius: 10px;
+    color: #fff;
+    /* border-radius: 50%;
+    width:36px;
+    height: 36px; */
+}
+.upload image{
+    width:36px;
+    height: 36px;
+}
+
+
+.count{
+    font-size: 16pt;
+    font-weight: bolder;
+    color: #1d2a6d;
 }

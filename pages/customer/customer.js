@@ -26,10 +26,11 @@ Page({
     data: {
 
         userInfo: {
-            name: "魏阿未",
-            avatar: "https://ci.xiaohongshu.com/6bc52795-c599-3c27-bacc-a20a33054ff6?imageView2/2/w/828/q/82/format/jpg",
+            // name: "魏阿未",
+            // avatar: "https://ci.xiaohongshu.com/6bc52795-c599-3c27-bacc-a20a33054ff6?imageView2/2/w/828/q/82/format/jpg",
         },
         
+        maxScore:30,
         countScore:0,//积分
 
         photoList: [
@@ -53,14 +54,51 @@ Page({
     onLoad: function (options) {
         GP = this
 
-        wx.setStorageSync("uuid", "1cff3e06-adf7-11e9-b8ce-e95aa2c51b5d")
+        // wx.setStorageSync("uuid", "1cff3e06-adf7-11e9-b8ce-e95aa2c51b5d")
         GP.onInit()
+
+        // GP.baseToSrc()
     },
+
+    baseToSrc(){
+        console.log(wx.env.USER_DATA_PATH)
+        var bodyData = wx.getStorageSync(API.USER_QR)
+        const buffer = wx.base64ToArrayBuffer(bodyData);
+        var filePath = wx.env.USER_DATA_PATH + "/qr.png"
+        var fx = wx.getFileSystemManager()
+
+        // fx.writeFileSync(filePath, buffer,"base64")
+        
+        fx.writeFile({
+            filePath,
+            data: buffer,
+            encoding: 'base64',
+            success() {
+                // cb(filePath);1
+                // wx.previewImage({
+                //     urls: [],
+                // })
+                // return ("123");
+            },
+            fail() {
+                return (new Error('ERROR_BASE64SRC_WRITE'));
+            },
+        });
+    },
+
+
+
+
 
     /**
      * @method 页面初始化
      */
     onInit() {
+
+        GP.setData({
+            userInfo:wx.getStorageSync(API.USER_INFO)
+        })
+
         // 获取分享数据
         db.customerGetUserInfo().then(res => {
             // console.log(res)
@@ -124,10 +162,11 @@ Page({
         })
         var share_image = e.detail
         if (wx.getStorageSync(API.USER_QR) == "")
-            db.customerGetQR()
-            .then(res => {
+            db.customerGetQR().then(res => {
                 console.log(res.data.qr_base64)
-                var user_qr = res.data.qr_base64
+                // var user_qr = res.data.qr_base64
+                // https://www.51zfgx.com/wxacodeunlimit/wm_1
+                var user_qr = "https://www.51zfgx.com/wxacodeunlimit/" + res.data.qr_base64
                 wx.setStorageSync(API.USER_QR, user_qr)
                 GP.makeShareCover(share_image, user_qr)
             })
@@ -151,6 +190,13 @@ Page({
 
 
     toQR(){
+        if (GP.data.countScore < GP.data.maxScore ){
+            wx.showModal({
+                title: '需要30点才能兑换',
+                content: '请把美美的明信片发给好友参与活动',
+            })
+            return
+        }
         wx.navigateTo({
             url: '/pages/qrcode/qrcode',
         })

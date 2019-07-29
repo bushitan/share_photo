@@ -53,32 +53,62 @@ Component({
                 })
             }
         },
-
+       
         start(){
 
-            this.downImage().then(res=>{
+            var GP = this
+            this.downImage(this.data.shareImage).then(res=>{
                 // console.log(res)
                 var path = res.path
                 var width = res.width
                 var height = res.height
                 // 绘图
+                // debugger
+                this.downImage(this.data.userQR).then(res => {
+                    var qr_path = res.path
 
-                canvas = wx.createCanvasContext(downCanvasID, this)
-                draw = new Draw(this, canvas, width, height)
-                this.setData({
-                    canvasWidth: draw.getWidth(),
-                    canvasHeight: draw.getHeight(),
+                    canvas = wx.createCanvasContext(downCanvasID, this)
+                    draw = new Draw(this, canvas, width, height)
+                    this.setData({
+                        canvasWidth: draw.getWidth(),
+                        canvasHeight: draw.getHeight(),
+                    })
+                    draw.setBackground()
+                    draw.setShare(path)
+                    draw.setSlug(this.data.slugImage)
+                    draw.setQR(qr_path)
+
+                    // 输出
+                    this.out()
                 })
-                draw.setBackground()
-                draw.setShare(path)
-                draw.setSlug(this.data.slugImage)
-                draw.setQR(this.data.userQR)
-
-                // 输出
-                this.out()
             })
 
         },
+        // start() {
+
+        //     this.downImage().then(res => {
+        //         // console.log(res)
+        //         var path = res.path
+        //         var width = res.width
+        //         var height = res.height
+        //         // 绘图
+        //         // debugger
+        //         canvas = wx.createCanvasContext(downCanvasID, this)
+        //         draw = new Draw(this, canvas, width, height)
+        //         this.setData({
+        //             canvasWidth: draw.getWidth(),
+        //             canvasHeight: draw.getHeight(),
+        //         })
+        //         draw.setBackground()
+        //         draw.setShare(path)
+        //         draw.setSlug(this.data.slugImage)
+        //         draw.setQR(this.data.userQR)
+
+        //         // 输出
+        //         this.out()
+        //     })
+
+        // },
         // 输出图片
         out() {
             canvas.draw(false, () => {
@@ -103,10 +133,10 @@ Component({
 
      
         // 1 下载图片
-        downImage() {
+        downImage(url) {
             return new Promise((resolve, reject) => {
                 wx.downloadFile({
-                    url: this.data.shareImage, //仅为示例，并非真实的资源
+                    url: url, //仅为示例，并非真实的资源
                     success(res) {
                         // resolve(res.tempFilePath)
                         var path = res.tempFilePath

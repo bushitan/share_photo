@@ -1,21 +1,47 @@
 <!--pages/customer/customer.wxml-->
 
-<view class="footer">
+<!-- <button catchtap="baseToSrc" >base64</button> -->
+<!-- <view class="footer">
     <view>集齐30个分享，到年卡办理点兑换小礼物</view>
-    <!-- <view> -->
     <view class='flex'>
         <button size="mini" catchtap='toQR' type='primary'>兑换</button>
         <button size="mini">示意图</button>
     </view>
-    <!-- </view> -->
-</view>
+</view> -->
 <view class="page">
     <!-- <view>分享数集齐30个，到年卡办理点兑换小礼物</view>
     <button >兑换</button> -->
-    <user_detail
-        avatar="{{userInfo.avatar}}"
-        name="{{userInfo.name}}"
-    ></user_detail>
+        
+    <wave
+        logo="{{store.logo}}"
+        summary="{{userInfo.id}}"
+        start_time="{{store.start_time}}"
+        end_time="{{store.end_time}}"
+    ></wave>  
+    <view style="height:22px;"></view>
+    
+    <user_detail></user_detail>
+
+    <view class="tool">
+    
+        <view class="flex flex_around"> 
+            <view >已搜集点数：<label class="count">{{countScore}}</label></view>
+            <!-- <view >分享数</view> -->
+        </view>
+
+            
+        <view class="upload">
+            <view class="btn camera" catchtap="addImage">
+                <image src="../../images/btn_upload.png"></image>
+                拍照
+            </view>
+            <view class="btn" catchtap="toQR">
+                兑换
+            </view>
+        </view>
+    
+    </view>
+    
 
     <time_line
         list="{{photoList}}"
@@ -23,20 +49,9 @@
     ></time_line>
 
 </view>
-
-<view class="upload">
-    <view class="btn" catchtap="addImage">
-        <image src="../../images/btn_upload.png"></image>
-    </view>
-</view>
-
-<!-- <button catchtap="addImage">添加图片</button> -->
 <view style="height:50px;"></view>
 
 
 <ai_make 
     create="{{shareCover}}" 
 ></ai_make>
-
-    <!-- width="{{width}}"
-    height="{{height}}" -->

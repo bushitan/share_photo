@@ -9,9 +9,10 @@
     ],
     "window": {
         "backgroundTextStyle": "light",
-        "navigationBarBackgroundColor": "#fff",
+        "backgroundColor": "#ffffff",
+        "navigationBarBackgroundColor": "#efaf30",
         "navigationBarTitleText": "分享照片墙",
-        "navigationBarTextStyle": "black"
+        "navigationBarTextStyle": "white"
     },
     "tabBar": {
         "color": "#cdcdcd",
@@ -21,15 +22,16 @@
         "list": [
             {
                 "pagePath": "pages/blogger/blogger",
-                "text": "夜游达人",
+                "text": "美拍精品",
                 "iconPath": "images/tabbar_view.png",
                 "selectedIconPath": "images/tabbar_view_select.png"
             },
             {
                 "pagePath": "pages/customer/customer",
-                "text": "我的摄影",
-                "iconPath": "images/tabbar_view.png",
-                "selectedIconPath": "images/tabbar_view_select.png"
+                "text": "我的照片",
+                "iconPath": "images/tabbar_self.png",
+                "selectedColor": "#1d2a6d",
+                "selectedIconPath": "images/tabbar_self_select.png"
             }
         ]
     },

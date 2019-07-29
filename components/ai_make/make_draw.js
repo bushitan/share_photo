@@ -74,6 +74,7 @@ class Draw{
     }
     // 设置二维码
     setQR(qr) {
+        // debugger
         this.canvas.drawImage(
             qr,
             this.qrX,

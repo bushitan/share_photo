@@ -8,5 +8,5 @@ page{
 }
 
 .tab{
-    background-color: #ffffff;
+    background-color: #efaf30;
 }

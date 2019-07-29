@@ -2,6 +2,7 @@
     "usingComponents": {
         "user_detail": "../../components/user_detail/user_detail",
         "ai_make": "../../components/ai_make/ai_make",
+        "wave": "../../components/wave/wave",
         "time_line":"../../components/time_line/time_line"
     }
 }

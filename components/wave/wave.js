@@ -4,23 +4,34 @@ Component({
    * 组件的属性列表
    */
     properties: {
-        avatar: {
-            type: String,
-            value: "",
-        },
-        user_id: {
+        score: {
             type: Number,
             value: 0,
         },
-        name: {
+        exchange: {
+            type: Number,
+            value: 10,
+        },
+        logo: {
             type: String,
             value: "",
         },
-        count: {
-            type: Number,
-            value: 0,
+        summary: {
+            type: String,
+            value: "",
         },
-
+        start_time: {
+            type: String,
+            value: "",
+        },
+        end_time: {
+            type: String,
+            value: "",
+        },
+        color: {
+            type: String,
+            value: "#000",
+        }
   },
 
   /**
