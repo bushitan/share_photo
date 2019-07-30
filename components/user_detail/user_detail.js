@@ -38,5 +38,8 @@ Component({
     _change(newVal, oldVal) {
     },
 
+      addPhoto(e){
+          this.triggerEvent("addPhoto")
+      },
   }
 })

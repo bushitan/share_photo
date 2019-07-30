@@ -198,7 +198,7 @@ Page({
             return
         }
         wx.navigateTo({
-            url: '/pages/qrcode/qrcode',
+            url: '/pages/qrcode/qrcode?',
         })
     },
     /**

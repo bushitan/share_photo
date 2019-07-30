@@ -13,9 +13,9 @@ page{
     display: flex;
     justify-content: center;
 }
-button{
+/* button{
     margin: 10px 10px 0 0;
-}
+} */
 .footer{
     z-index: 999999;
     background-color: #ffffff;

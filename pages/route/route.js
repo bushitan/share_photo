@@ -23,6 +23,12 @@ Page({
      */
     onLoad: function (options) {
         console.log(options)
+        console.log(options.scene)
+        
+
+
+
+
         GP = this
         // wx.showLoading({
         //     title: '加载中...',
@@ -37,6 +43,15 @@ Page({
             console.log(res)
             wx.setStorageSync(API.USER_INFO, res.data.user_info)
             wx.setStorageSync(API.UUID, res.data.user_info.uuid)
+
+            GP.checkWM(options)//检测是否帮助好友
+
+            if(res.data.user_info.is_seller == true){
+                wx.redirectTo({
+                    url: '/pages/seller/seller',
+                })
+            }
+
             if (res.message.code == APP.MESSAGE.SYS_SUCCESS){
                 wx.switchTab({
                     url: '/pages/blogger/blogger',
@@ -50,6 +65,21 @@ Page({
         // GP.test()
     },    
 
+    /**
+     * @method 外卖帮助好友
+     */
+    checkWM(options){
+        if (options.hasOwnProperty('scene')) { 
+            var sceneList = scene.split('_')
+            var customer_id = sceneList[1]
+            db.customerAddHelp(customer_id).then(res=>{
+                wx.showModal({
+                    title: res.message.title,
+                    content: res.message.content,
+                })
+            })
+        }
+    },
 
     test() {
         db.articleGetList()

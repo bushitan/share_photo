@@ -14,7 +14,7 @@ Page({
      */
     onLoad: function (options) {
         var mode = options.mode
-        var store_uuid = options.store_uuid
+        var store_uuid = options.store_uuid || ""
 
         this.setMode(mode, store_uuid)
  
@@ -28,7 +28,7 @@ Page({
         }
         else{
             title = "奖品兑换码（向工作人员出示）"
-            userQR = `prize,${wx.getStorageSync(API.UUID)},${store_uuid}`
+            userQR = `prize,${wx.getStorageSync(API.USER_INFO).id},${store_uuid}`
             wx.setNavigationBarColor({
                 frontColor: '#ffffff',
                 backgroundColor: '#1d2a6d',

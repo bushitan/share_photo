@@ -22,6 +22,7 @@ page{
 .flex{
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 .flex_around{
     justify-content: space-around;
@@ -85,3 +86,10 @@ page{
     font-weight: bolder;
     color: #1d2a6d;
 }
+
+
+
+
+.add_photo{
+    margin: 0;
+} 

@@ -20,12 +20,22 @@
     ></wave>  
     <view style="height:22px;"></view>
     
-    <user_detail></user_detail>
+    <user_detail
+        catch:addPhoto="addPhoto"
+    ></user_detail>
+    <!-- <view>
+    </view> -->
 
     <view class="tool">
     
+        <!-- <view class="upload">
+            <view class="btn camera" catchtap="addImage">
+                <image src="../../images/btn_upload.png"></image>
+                拍照
+            </view>
+        </view> -->
         <view class="flex flex_around"> 
-            <view >已搜集点数：<label class="count">{{countScore}}</label></view>
+            <view >明信片已获得点数：<label class="count">{{countScore}}</label></view>
             <!-- <view >分享数</view> -->
         </view>
 

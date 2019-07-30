@@ -1,4 +1,40 @@
 <!--pages/seller/seller.wxml-->
-<text>pages/seller/seller.wxml</text>
 
-<button catchtap="scan">扫码核销</button>
+<!-- <view style="height:20px"></view> -->
+        
+<wave
+    logo="{{store.logo}}"
+    summary="{{userInfo.id}}"
+    start_time="{{store.start_time}}"
+    end_time="{{store.end_time}}"
+></wave>  
+<view style="height:50px;"></view>
+<view class="btn">
+    <button catchtap="scan" type="primary">扫码核销</button>
+</view>
+<view class="weui-panel weui-panel_access" >
+    <view class="weui-panel__bd">
+        <block wx:for="{{prizeList}}"  wx:key="index">
+            <view
+                class="weui-media-box weui-media-box_appmsg "
+                hover-class="weui-cell_active" 
+                catchtap='toStore' 
+                data-store_uuid='{{item.store_uuid}}'
+            >
+                <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+                    <view class="weui-media-box__title">核销用户ID：{{item.id}}</view>
+                    <view class="weui-media-box__desc">核销时间：{{item.create_time}}</view>
+                </view>
+                <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
+                    <image class="weui-media-box__thumb" src="{{item.logo}}" />
+                </view>
+            </view>
+        </block>
+    </view>
+</view>
+<view class="weui-loadmore " >
+    <view class="weui-loadmore">
+        <!-- <view class="weui-loading"></view> -->
+        <view class="weui-loadmore__tips">展示最近10个核销信息</view>
+    </view>
+</view>

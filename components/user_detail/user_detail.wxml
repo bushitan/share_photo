@@ -8,9 +8,13 @@
     </view>
     <view class="summary">
         <view>1、拍照上传，点击“生成明信片”,获取我的明信片</view>
-        <view>2、将明信片送给好友，每个好友获取1点</view>
-        <view>3、集齐30个点，到年卡办理点兑换小礼物</view>
-        <view>4、优秀的明信片作品，还能竞选<label class="mark">华为手机</label>大奖！</view>
+        <view>2、将明信片分享好友，可到方特年卡办理点兑换小礼物</view>
+        <!-- <view>2、将明信片送给好友，每个好友获取1点</view>
+        <view>3、集齐30个点，到方特年卡办理点兑换小礼物</view> -->
+        <view>3、优秀的明信片作品，还能竞选<label class="mark">华为手机</label>大奖！</view>
+        <!-- <view>（请<label class="mark">添加电话号码</label>，方便工作人员联系）</view> -->
+        <view class="flex ">（请<button size="mini" class="add_photo" open-type="getPhoneNumber" bindgetphonenumber="addPhoto">添加电话号码</button>，方便工作人员与您联系）</view>
+        
     </view>
 
 
