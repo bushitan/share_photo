@@ -10,9 +10,14 @@ var USER = "01"    // # 用户
 var ARTICLE = "02"    // # 文章
 
 App({
-    onLaunch: function () {
-    
+    onLaunch: function (options) {
+        console.log("[onLaunch] 本次场景值:", options.scene)
+        // this.globalData.scene = options.scene
     },
+    // globalData: {
+    //     userInfo: null,
+    //     scene: 1001
+    // },
   
 
     ROUTE: {

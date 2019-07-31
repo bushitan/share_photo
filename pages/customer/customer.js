@@ -201,6 +201,13 @@ Page({
             url: '/pages/qrcode/qrcode?',
         })
     },
+
+    addPhoto(){
+        wx.navigateTo({
+            url: '/pages/host/host',
+        })
+    },
+
     /**
      * 用户点击右上角分享
      */

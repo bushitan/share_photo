@@ -89,6 +89,9 @@ Page({
     tapCard: function (event) {
         const cardId = event.detail.card_id
         var article = pack.getArticleByID(GP.data.articleList, cardId)
+        // 没有url
+        if (article.url == "")
+            return
         wx.navigateTo({
             url: '/pages/article/article?url=' + article.url,
         })

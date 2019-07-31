@@ -70,6 +70,7 @@ Page({
      */
     checkWM(options){
         if (options.hasOwnProperty('scene')) { 
+            var scene = options.scene
             var sceneList = scene.split('_')
             var customer_id = sceneList[1]
             db.customerAddHelp(customer_id).then(res=>{

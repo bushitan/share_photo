@@ -1,6 +1,7 @@
 {
     "pages": [
         "pages/route/route",
+        "pages/host/host",
         "pages/article/article",
         "pages/blogger/blogger",
         "pages/seller/seller",
@@ -11,7 +12,7 @@
         "backgroundTextStyle": "light",
         "backgroundColor": "#ffffff",
         "navigationBarBackgroundColor": "#efaf30",
-        "navigationBarTitleText": "分享照片墙",
+        "navigationBarTitleText": "方特夜拍大赛作品征集墙",
         "navigationBarTextStyle": "white"
     },
     "tabBar": {
@@ -22,7 +23,7 @@
         "list": [
             {
                 "pagePath": "pages/blogger/blogger",
-                "text": "美拍精品",
+                "text": "夜拍推荐",
                 "iconPath": "images/tabbar_view.png",
                 "selectedIconPath": "images/tabbar_view_select.png"
             },
