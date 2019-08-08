@@ -3,6 +3,7 @@ var GP
 var API = require('../../api/api.js')
 var db = require('../../api/db.js')
 var pack = require('pack.js')
+var APP = getApp()
 
 Page({
 
@@ -19,6 +20,21 @@ Page({
         tagList:[], //标签列表
         dataSet:[], // 显示的文章
         likeList:[],
+
+
+        dialogvisible: !false,
+        options: {
+            showclose: false,
+            showfooter: true,
+            closeonclickmodal: true,
+            fullscreen: false
+        },
+        title: '活动规则',
+        opacity: '0.4',
+        width: '85',
+        position: 'center',
+        nodes:"",
+        // logo:"https://image2.135editor.com/cache/remote/aHR0cHM6Ly9tbWJpei5xbG9nby5jbi9tbWJpel9naWYvN1FSVHZrSzJxQzRYUU01TnRpYVhnU0hpYVEwUGNOaWJrWVJwVGFEbkxLRlpJSWljTEY4ZGhQdG5TTkRKRGtpYnAxYjJJQXI5Qnlqak5hbE5DUHZ4REtzOVFyUS8wP3d4X2ZtdD1naWY=",
     },
 
     /**
@@ -51,6 +67,11 @@ Page({
             })
         })
 
+        db.articleGetRule().then(res=>{
+            GP.setData({
+                nodes:res.data.rule
+            })
+        })
       
     },
 
@@ -139,19 +160,20 @@ Page({
         console.log("expand call back")
     },
 
-
-
-
-
-
-
-
+    /**
+     * @打开活动规则提示框
+     */
+    showDialog: function () {
+        this.setData({
+            dialogvisible: true
+        })
+    },
 
 
     /**
      * 用户点击右上角分享
      */
-    onShareAppMessage: function () {
-
+    onShareAppMessage: function (e) {
+        return APP.onShareAppMessage(e)
     }
 })

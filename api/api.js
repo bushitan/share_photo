@@ -21,7 +21,8 @@ module.exports = {
 
 
     SYSTEM_LOGIN: `${URL}system/login/`,
-    SYSTEM_SET_USER_INFO: `${URL}system/set/user_info/`, 
+    SYSTEM_SET_USER_INFO: `${URL}system/set/user_info/`,
+    ARTICLE_GET_RULE: `${URL}article/get/rule/`,    //#获取标签，文章列表
     ARTICLE_GET_LIST: `${URL}article/get/list/`,    //#获取标签，文章列表
     ARTICLE_GET_DETAIL: `${URL}article/get/detail/`,//#获取文章详情
     CUSTOMER_GET_USER_INFO: `${URL}customer/get/user_info/`, //#获取当天的分数和礼物领取情况

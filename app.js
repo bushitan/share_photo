@@ -53,10 +53,9 @@ App({
             console.log(res.target)
         }
         return {
-            title: res.title || '南宁好吃好喝好玩',
+            title: res.title || '方特夜拍大赛',
             path: res.path || '/pages/route/route',
-            // imageUrl: res.imageUrl || "../../images/icon_share_base_cup.png",
-
+            imageUrl: res.imageUrl || "../../images/share.jpg",
         }
     },
 

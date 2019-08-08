@@ -71,6 +71,10 @@ class DB {
         return this.baseURL(API.SYSTEM_SET_USER_INFO, userInfo)
     }
 
+    articleGetRule(){
+        return this.baseURL(API.ARTICLE_GET_RULE)
+    }
+
     /***********文章API*************/
     // 2 获取文章列表
     articleGetList() {

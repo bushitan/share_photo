@@ -1,4 +1,7 @@
 <!--pages/blogger/blogger.wxml-->
+<view  class='swiper' catchtap='showDialog'>
+    <image src='../../images/swiper.jpg'  class='swiper_cover'></image>
+</view>
 <view class='tab'>
     <tab mode="menu" list="{{tagList}}" 
         catchclick="clickTab" initindex="0" 
@@ -15,3 +18,19 @@
     bind:onCardExpanded="onCardExpanded"
     />
 </view>
+
+
+<view class="weui-loadmore weui-loadmore_line">
+    <view class="weui-loadmore__tips weui-loadmore__tips_in-line">索骏科技提供服务</view>
+</view>
+
+<!-- <view class="container"> -->
+    <dialog data-model="dialogvisible" visible="{{dialogvisible}}" position="{{position}}" title="{{title}}" fullscreen="{{options.fullscreen}}" opacity="{{opacity}}" show-close="{{options.showclose}}" show-footer="{{options.showfooter}}" width="{{width}}"
+    close-on-click-modal="{{options.closeonclickmodal}}" bindclose="handleClose" bindopen="handleOpen" bindconfirm="handleConfirm">
+        <!-- <view style='height:70vh;'> -->
+        <view >
+            <!-- <image src='{{logo}}'></image> -->
+            <rich-text nodes="{{nodes}}"></rich-text>
+        </view>
+    </dialog>
+<!-- </view> -->
