@@ -12,10 +12,10 @@
                     <view class='xx_f_7 xx_m_t8'>{{item.start_time}} - {{item.end_time}}  | {{item.des}}</view> -->
                     <image class="cover" src="{{item.photo_url}}" mode="widthFix" 
                         catchtap="preview" data-url="{{item.photo_url}}"></image>
-                    <view class="btn">
+                    <!-- <view class="btn">
                         <button size="mini" 
                             catchtap='share' data-url="{{item.photo_url}}">生成明信片</button>
-                    </view>
+                    </view> -->
                 </view>
             </view>
         </view>

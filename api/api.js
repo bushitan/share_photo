@@ -4,7 +4,9 @@
 var APP_ID = "wxc3cb221202af930a"
 
 // var HOST = "http://www.51zfgx.com:1100/dev/" //第2正式版本
-var HOST = "https://www.51zfgx.com/share_photo_server_dev/" //第2正式版本
+// var HOST = "https://www.51zfgx.com/share_photo_server_dev/" //第2正式版本
+var HOST = "https://www.51zfgx.com/share_sever_v1_2_1/" //第2正式版本
+
 
 // var HOST = "https://www.51zfgx.com/dev/" //测试版本
 var URL = HOST + "photo/"
