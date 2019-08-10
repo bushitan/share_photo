@@ -5,6 +5,9 @@ var db = require('../../api/db.js')
 var pack = require('pack.js')
 var APP = getApp()
 
+
+// ,
+// "brickLayout": "plugin://brickLayout/brickLayout"
 Page({
 
     /**

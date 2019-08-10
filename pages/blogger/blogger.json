@@ -2,6 +2,6 @@
     "usingComponents": {
         "tab": "../../components/xx_tab/xx_tab",
         "dialog": "/components/dialog-wxapp/dialog",
-        "brickLayout": "plugin://brickLayout/brickLayout"
+        "brickLayout": "/components/brickLayout/brickLayout"
     }
 }

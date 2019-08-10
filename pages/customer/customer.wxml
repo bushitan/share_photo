@@ -34,10 +34,9 @@
                 拍照
             </view>
         </view> -->
-        <view class="flex flex_around"> 
+        <!-- <view class="flex flex_around"> 
             <view >明信片已获得点数：<label class="count">{{countScore}}</label></view>
-            <!-- <view >分享数</view> -->
-        </view>
+        </view> -->
 
             
         <view class="upload">
@@ -45,9 +44,9 @@
                 <image src="../../images/btn_upload.png"></image>
                 拍照
             </view>
-            <view class="btn" catchtap="toQR">
+            <!-- <view class="btn" catchtap="toQR">
                 兑换
-            </view>
+            </view> -->
         </view>
     
     </view>
