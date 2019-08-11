@@ -41,5 +41,10 @@ Component({
       addPhoto(e){
           this.triggerEvent("addPhoto")
       },
+      toRule(){
+          wx.navigateTo({
+              url: '/pages/article/article?url=https://mp.weixin.qq.com/s/DNJnAd-xNE-UBBv4LYXHQg',
+          })
+      },
   }
 })

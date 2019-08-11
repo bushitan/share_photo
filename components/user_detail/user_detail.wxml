@@ -4,7 +4,7 @@
     <view style="height:15px"></view>
 
     <view class="title">
-        上传自拍，赢取方特大奖
+        上传方特夜景，赢取华为手机大奖
     </view>
     <view class="summary">
         <!-- <view>1、拍照上传，点击“生成明信片”,获取我的明信片</view>
@@ -13,11 +13,11 @@
         <view>3、集齐30个点，到方特年卡办理点兑换小礼物</view> -->
         <!-- <view>3、优秀的明信片作品，还能竞选<label class="mark">华为手机</label>大奖！</view> -->
         <!-- <view>（请<label class="mark">添加电话号码</label>，方便工作人员联系）</view> -->
-        <view class="flex ">（请添加<button size="mini" class="add_photo" catchtap="addPhoto">
-        <!-- <button size="mini" class="add_photo" open-type="getPhoneNumber" bindgetphonenumber="addPhoto"> -->
-        
+        <view class="flex ">（请添加 <button size="mini" class="add_photo" catchtap="addPhoto">
+        <!-- <button size="mini" class="add_photo" open-type="getPhoneNumber" bindgetphonenumber="addPhoto"> -->        
         联系方式</button>，方便工作人员与您联系）</view>
         
+        <view class="flex ">（查看活动规则与奖品 <button size="mini" class="add_photo" catchtap="toRule">进入规则长图</button>）</view>
     </view>
 
 
