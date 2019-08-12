@@ -20,9 +20,22 @@
 </view>
 
 
-<view class="weui-loadmore weui-loadmore_line">
-    <view class="weui-loadmore__tips weui-loadmore__tips_in-line">索骏科技提供服务</view>
+
+   
+<view class="weui-msg__extra-area">
+    <view class="weui-footer">
+    <view class="weui-footer__links">
+        <navigator url="" class="weui-footer__link" catchtap='refresh'>信息加载不对？点这刷新一下</navigator>
+    </view>
+    <view class="weui-footer__text">Copyright © 索骏科技提供服务</view>
+    </view>
 </view>
+<view style="height:10px;"></view>
+<official-account></official-account>
+<view style="height:30px;"></view>
+<!-- <view class="weui-loadmore weui-loadmore_line">
+    <view class="weui-loadmore__tips weui-loadmore__tips_in-line">索骏科技提供服务</view>
+</view> -->
 
 <!-- <view class="container"> -->
     <dialog data-model="dialogvisible" visible="{{dialogvisible}}" position="{{position}}" title="{{title}}" fullscreen="{{options.fullscreen}}" opacity="{{opacity}}" show-close="{{options.showclose}}" show-footer="{{options.showfooter}}" width="{{width}}"

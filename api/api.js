@@ -20,6 +20,15 @@ module.exports = {
     APP_ID: "app_id",
     UNION_ID: "union_id",
 
+    // 用户照片列表
+    USER_PHOTO_LIST: "user_photo_list",
+    // 用户浏览的文章列表
+    USER_ARTICLE_LIST: "user_article_list",
+    // 用户标签列表
+    USER_TAG_LIST: "user_tag_list",
+    // 用户点赞列表
+    USER_LIKE_LIST: "user_like_list",
+
 
 
     SYSTEM_LOGIN: `${URL}system/login/`,

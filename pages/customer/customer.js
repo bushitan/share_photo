@@ -1,3 +1,4 @@
+
 // pages/customer/customer.js
 var GP
 var API = require('../../api/api.js')
@@ -46,6 +47,7 @@ Page({
 
         shareCover:null, //分享海报信息
 
+        isLock:false,
     },
 
     /**
@@ -59,6 +61,37 @@ Page({
 
         // GP.baseToSrc()
     },
+
+
+    /**
+     * @method 刷新
+     */
+    refresh() { 
+        if (GP.data.isLock == true){
+            wx.showToast({
+                title: '请勿重复点击',
+                icon:"loading"
+            })
+            return 
+        }
+
+        GP.setData({ isLock:true})
+        setTimeout(function () { GP.setData({ isLock: false })},6000)
+        GP.getLastPhotoList()
+      
+    },
+
+    getLastPhotoList(){
+        // 获取我的相册
+        db.customerGetPhotoList().then(res => {
+            var _list = res.data.photo_list
+            GP.setData({
+                photoList: _list
+            })
+            wx.setStorageSync(API.USER_PHOTO_LIST, _list)
+        })
+    },
+
 
     baseToSrc(){
         console.log(wx.env.USER_DATA_PATH)
@@ -89,31 +122,41 @@ Page({
 
 
 
-
     /**
-     * @method 页面初始化
-     */
+         * @method 页面初始化
+         */
     onInit() {
-
         GP.setData({
-            userInfo:wx.getStorageSync(API.USER_INFO)
-        })
-
-        // 获取分享数据
-        db.customerGetUserInfo().then(res => {
-            // console.log(res)
-            GP.setData({
-                countScore: res.data.count_score,
-            })
-        })
-
-        // 获取我的相册
-        db.customerGetPhotoList().then(res =>{
-            GP.setData({
-                photoList: res.data.photo_list
-            })
+            userInfo: wx.getStorageSync(API.USER_INFO),
+            photoList: wx.getStorageSync(API.USER_PHOTO_LIST),
         })
     },
+
+
+    // /**
+    //  * @method 页面初始化
+    //  */
+    // onInit() {
+
+    //     GP.setData({
+    //         userInfo:wx.getStorageSync(API.USER_INFO)
+    //     })
+
+    //     // 获取分享数据
+    //     db.customerGetUserInfo().then(res => {
+    //         // console.log(res)
+    //         GP.setData({
+    //             countScore: res.data.count_score,
+    //         })
+    //     })
+
+    //     // 获取我的相册
+    //     db.customerGetPhotoList().then(res =>{
+    //         GP.setData({
+    //             photoList: res.data.photo_list
+    //         })
+    //     })
+    // },
 
 
     /**
@@ -122,6 +165,15 @@ Page({
     addImage(){
         // initQiniu();
         // 微信 API 选文件
+
+        if (GP.data.photoList.length >= 5) {
+            wx.showModal({
+                title: '上传图片满了',
+                content: '最多只能上传5张照片',
+            })
+            return
+        }
+        
         wx.chooseImage({
             count: 1,
             sizeType: ['compressed'],
@@ -208,6 +260,7 @@ Page({
         })
     },
 
+
     /**
      * 用户点击右上角分享
      */
@@ -221,18 +274,25 @@ Page({
 function Uploader(filePath,key,uptoken){
     // 交给七牛上传
     // debugger
+    wx.showLoading({
+        title: '上传中',
+    })
     qiniuUploader.upload(filePath, (res) => {
         console.log('file url is: ' + res.fileUrl)
 
         // 增加记录
         db.customerAddPhoto(res.fileUrl).then( res=>{
             var code = res.message.code
+            
             wx.showModal({
                 title: res.message.title,
                 content: res.message.content,
             })
-            GP.onInit()
-        }) 
+            // GP.onInit()
+            GP.getLastPhotoList()
+
+            wx.hideLoading()
+        }).catch( res=> wx.hideLoading())
 
 
     }, (error) => {

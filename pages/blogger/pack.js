@@ -63,17 +63,35 @@ function like(show_list,like_list){
         for (var j = 0; j < like_list.length;j++){
             if (show_list[i].id == like_list[j].article_id){
                 show_list[i].liked = true
+                // show_list[i].likedCount++
+            }
+        }
+    return show_list
+}
+
+
+function localLike(show_list, like_list) {
+    console.log(show_list, like_list)
+
+    for (var i = 0; i < show_list.length; i++)
+        for (var j = 0; j < like_list.length; j++) {
+            if (show_list[i].id == like_list[j].article_id) {
+                show_list[i].liked = true
                 show_list[i].likedCount++
             }
         }
     return show_list
 }
 
+
+
+
 module.exports = {
     article: article,
     option:option,
     getArticleByID: getArticleByID,
     like:like,
+    localLike: localLike,
 }
 
 

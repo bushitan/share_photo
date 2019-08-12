@@ -4,7 +4,8 @@
             <view class='xx_p_t15 xx_p_lr15'>
                 <view class='xx_flex' style='margin-left:-10px;'>
                     <view class='point'></view>
-                    <view class='xx_f_10 '>{{item.create_time}}</view>
+                    <!-- <view class='xx_f_10 '>作品ID：{{item.gallery_id}}</view> -->
+                    <!-- <view class='xx_f_10 '>{{item.create_time}}</view> -->
                 </view>
                 <view class='content' catchtap='click' data-index="{{index}}">
                     <!-- <view class='xx_agenda__title'>{{item.title}}</view>
@@ -23,7 +24,7 @@
     <view class='xx_p_t15 xx_p_lr15'>
         <view class='xx_flex' style='margin-left:-10px;'>
             <view class='point'></view>
-            <view class='xx_f_10 '>准备做自己的明信片</view>
+            <view class='xx_f_10 '>准备参加方特夜拍大赛</view>
         </view>
     </view>
 </view> 

@@ -25,7 +25,7 @@ Page({
         likeList:[],
 
 
-        dialogvisible: !false,
+        dialogvisible: false,
         options: {
             showclose: false,
             showfooter: true,
@@ -38,6 +38,12 @@ Page({
         position: 'center',
         nodes:"",
         // logo:"https://image2.135editor.com/cache/remote/aHR0cHM6Ly9tbWJpei5xbG9nby5jbi9tbWJpel9naWYvN1FSVHZrSzJxQzRYUU01TnRpYVhnU0hpYVEwUGNOaWJrWVJwVGFEbkxLRlpJSWljTEY4ZGhQdG5TTkRKRGtpYnAxYjJJQXI5Qnlqak5hbE5DUHZ4REtzOVFyUS8wP3d4X2ZtdD1naWY=",
+
+
+        // 刷讯锁
+        isLock: false,
+
+        tagID:1,
     },
 
     /**
@@ -48,10 +54,60 @@ Page({
         GP.onInit()
     },
 
+
+    /**
+     * @method 刷新
+     */
+    refresh() {
+        if (GP.data.isLock == true) {
+            wx.showToast({
+                title: '请勿重复点击',
+                icon: "loading"
+            })
+            return
+        }
+        GP.setData({ isLock: true })
+        setTimeout(function () { GP.setData({ isLock: false }) }, 6000)
+
+        GP.onInit()
+        GP.getLikeList()
+
+        wx.showToast({
+            title: '刷新成功',
+        })
+    },
+
+    /**
+     * @method  获取点赞列表
+     */
+    getLikeList(){
+        GP.onInit()
+        // 获取点赞列表
+        db.customerGetLikeList().then(res => {
+            var _list = res.data.like_list
+            GP.setData({
+                likeList: _list,
+            })
+            wx.setStorageSync(API.USER_LIKE_LIST, _list)
+            GP.setLikeArticle()
+        })
+    },
+
+
     /**
      * @method 页面初始化
      */
     onInit(){
+
+        // 初始化点赞列表，根据本地的信息
+        GP.setData({
+            articleList: wx.getStorageSync(API.USER_ARTICLE_LIST) || [],
+            tagList: wx.getStorageSync(API.USER_TAG_LIST) || [],
+            likeList: wx.getStorageSync(API.USER_LIKE_LIST)  || [],
+        })
+        GP.setShowArticle(1)
+
+
         // 获取文章列表
         db.articleGetList().then(res => {
             // console.log(res)
@@ -59,23 +115,30 @@ Page({
                 articleList: res.data.article_list,
                 tagList: res.data.tag_list,
             })
-            GP.setShowArticle(res.data.tag_list[0].id)
+            wx.setStorageSync(API.USER_ARTICLE_LIST ,  res.data.article_list) 
+            wx.setStorageSync(API.USER_TAG_LIST ,  res.data.tag_list) 
 
-            // 获取点赞列表
-            db.customerGetLikeList().then(res => {
-                GP.setData({
-                    likeList: res.data.like_list,
-                })
-                GP.setLikeArticle()
-            })
-        })
-
-        db.articleGetRule().then(res=>{
+            var tagID = res.data.tag_list[0].id
             GP.setData({
-                nodes:res.data.rule
+                tagID: tagID
             })
+            GP.setShowArticle(tagID)
+
+            // db.customerGetLikeList().then(res => {
+            //     GP.setData({
+            //         likeList: res.data.like_list,
+            //     })
+            //     GP.setLikeArticle()
+            // })
+            GP.setLikeArticle()
+
         })
-      
+
+        // db.articleGetRule().then(res=>{
+        //     GP.setData({
+        //         nodes:res.data.rule
+        //     })
+        // })
     },
 
 
@@ -88,10 +151,24 @@ Page({
         })
     },
 
+
+    /**
+     * @method 本地点赞
+     */
+    setLocaoLikeArticle(){
+        de
+        var artilce_list = GP.data.articleList
+        var dataSet = pack.article(artilce_list, GP.data.tagID)
+        GP.setData({
+            dataSet: pack.localLike(dataSet, GP.data.likeList)
+        })
+    },
+
     /**
      * @method 根据tag显示文章
      */
     setShowArticle(tag_id){
+        
         var artilce_list = GP.data.articleList
 
         var list = pack.article(artilce_list, tag_id)
@@ -105,6 +182,7 @@ Page({
      */
     clickTab(e){
         var index = e.detail
+        GP.setData({ tagID: GP.data.tagList[index].id})
         GP.setShowArticle(GP.data.tagList[index].id)
         GP.setLikeArticle()
     },
@@ -145,7 +223,9 @@ Page({
             }
             likeList.push(temp)
             GP.setData({ likeList: likeList})
-            GP.setLikeArticle()
+            wx.setStorageSync(API.USER_LIKE_LIST, likeList) 
+            // GP.setLikeArticle()
+            GP.setLocaoLikeArticle()
         }
             
 
@@ -167,8 +247,11 @@ Page({
      * @打开活动规则提示框
      */
     showDialog: function () {
-        this.setData({
-            dialogvisible: true
+        // this.setData({
+        //     dialogvisible: true
+        // })
+        wx.navigateTo({
+            url: '/pages/article/article?url=https://mp.weixin.qq.com/s/DNJnAd-xNE-UBBv4LYXHQg'
         })
     },
 

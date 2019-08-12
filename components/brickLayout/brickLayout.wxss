@@ -35,7 +35,7 @@
 }
 
 .list-box_header {
-  height: 32px;
+  /* height: 32px; */
   margin-bottom: 10px;
   overflow: hidden;
 }
@@ -44,6 +44,7 @@
   float: left;
   width: 30px;
   height: 30px;
+  margin-right: 10px;
   border-radius: 50%;
   background-size: cover;
 }
@@ -51,7 +52,7 @@
 .list-box_header .user-info {
   font-size: 12px;
   font-weight: bold;
-  margin-left: 34px;
+  /* margin-left: 34px; */
 }
 
 .list-box_header .user-info .user-name {
