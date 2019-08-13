@@ -16,8 +16,21 @@
     <button 
         size='mini' 
         type='primary'  
+        catchtap="relogin"
+        >网络问题，请重试</button>
+    </view>
+</view>
+
+
+
+<!-- <view hidden='{{!isRelogin}}'>
+    <view style='height:150px;'></view>
+    <view class='login'>
+    <button 
+        size='mini' 
+        type='primary'  
         open-type="getUserInfo" 
         bindgetuserinfo="onGetUserInfo"
         >网络问题，请重试</button>
     </view>
-</view>
+</view> -->

@@ -13,11 +13,11 @@
         <view>3、集齐30个点，到方特年卡办理点兑换小礼物</view> -->
         <!-- <view>3、优秀的明信片作品，还能竞选<label class="mark">华为手机</label>大奖！</view> -->
         <!-- <view>（请<label class="mark">添加电话号码</label>，方便工作人员联系）</view> -->
-        <view class="flex ">（请添加 <button size="mini" class="add_photo" catchtap="addPhoto">
-        <!-- <button size="mini" class="add_photo" open-type="getPhoneNumber" bindgetphonenumber="addPhoto"> -->        
-        联系方式</button>，若作品选中成为精选作品将会以电话形式通知您!）</view>
+        <view class="flex ">请点击绿色按钮添加联系方式</view>
+        <view class="flex ">若作品选中成为精选作品将会以电话形式通知您!</view>
         
         <view class="flex " style='margin-top:10px;'>
+            <button size="mini" class="add_photo" catchtap="addPhoto" type='primary'>【添加联系方式】</button>
             <button size="mini" class="add_photo" catchtap="toRule">【查看活动规则】</button>
         </view>
         

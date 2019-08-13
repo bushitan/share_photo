@@ -36,34 +36,56 @@ Page({
         wx.showLoading({
             title: 'loading...',
         })
+        GP.login()
+    },    
 
-        db.login().then(res=>{
+    login(){
+        db.login().then(res => {
             wx.hideLoading()
             // debugger
             console.log(res)
             wx.setStorageSync(API.USER_INFO, res.data.user_info)
             wx.setStorageSync(API.UUID, res.data.user_info.uuid)
 
-            GP.checkWM(options)//检测是否帮助好友
+            // GP.checkWM(options)//检测是否帮助好友
 
-            if(res.data.user_info.is_seller == true){
-                wx.redirectTo({
-                    url: '/pages/seller/seller',
-                })
-            }
+            // if (res.data.user_info.is_seller == true) {
+            //     wx.redirectTo({
+            //         url: '/pages/seller/seller',
+            //     })
+            // }
 
-            if (res.message.code == APP.MESSAGE.SYS_SUCCESS){
+            if (res.message.code == APP.MESSAGE.SYS_SUCCESS) {
                 wx.switchTab({
                     url: '/pages/blogger/blogger',
                 })
-            }else{
-                wGP.setData({
-                    isRelogin:true,
+            } else {
+                GP.setData({
+                    isRelogin: true,
                 })
             }
+        }).catch(res => {
+            wx.showModal({
+                title: '网络连接失败',
+                content: '请退出小程序，重新尝试',
+            })
+            GP.setData({
+                isRelogin: true,
+            })
         })
         // GP.test()
-    },    
+    },
+
+    relogin(){
+        wx.showLoading({
+            title: '再次尝试...',
+        })
+        GP.login()
+    },
+
+
+
+
 
     /**
      * @method 外卖帮助好友

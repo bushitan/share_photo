@@ -1,0 +1,7 @@
+{
+    "usingComponents": {
+        "tab": "../../components/xx_tab/xx_tab",
+        "dialog": "/components/dialog-wxapp/dialog",
+        "brickLayout": "/components/brickLayout/brickLayout"
+    }
+}
