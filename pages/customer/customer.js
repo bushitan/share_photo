@@ -59,7 +59,6 @@ Page({
         // wx.setStorageSync("uuid", "1cff3e06-adf7-11e9-b8ce-e95aa2c51b5d")
         GP.onInit()
 
-        // GP.baseToSrc()
     },
 
 
