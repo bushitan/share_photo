@@ -32,7 +32,10 @@
 </view>
 <view style="height:10px;"></view>
 <official-account></official-account>
-<view style="height:30px;"></view>
+<view class='ad'>
+    <ad class="ad_container" unit-id="adunit-407641bdb13debaa" ad-intervals="30"></ad>
+</view>
+<!-- <view style="height:30px;"></view> -->
 <!-- <view class="weui-loadmore weui-loadmore_line">
     <view class="weui-loadmore__tips weui-loadmore__tips_in-line">索骏科技提供服务</view>
 </view> -->

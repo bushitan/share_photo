@@ -20,3 +20,10 @@
         <view class="weui-footer__text">Copyright © 2008-2016 weui.io</view>
       </view>
     </view> */
+
+
+.ad{
+    display: flex;
+    justify-content: center;
+    padding: 15px;
+}
