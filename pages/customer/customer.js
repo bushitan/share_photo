@@ -122,40 +122,40 @@ Page({
 
 
     /**
-         * @method 页面初始化
-         */
-    onInit() {
-        GP.setData({
-            userInfo: wx.getStorageSync(API.USER_INFO),
-            photoList: wx.getStorageSync(API.USER_PHOTO_LIST),
-        })
-    },
+     * @method 页面初始化
+     */
+    // onInit() {
+    //     GP.setData({
+    //         userInfo: wx.getStorageSync(API.USER_INFO),
+    //         photoList: wx.getStorageSync(API.USER_PHOTO_LIST),
+    //     })
+    // },
 
 
     // /**
     //  * @method 页面初始化
     //  */
-    // onInit() {
+    onInit() {
 
-    //     GP.setData({
-    //         userInfo:wx.getStorageSync(API.USER_INFO)
-    //     })
+        GP.setData({
+            userInfo:wx.getStorageSync(API.USER_INFO)
+        })
 
-    //     // 获取分享数据
-    //     db.customerGetUserInfo().then(res => {
-    //         // console.log(res)
-    //         GP.setData({
-    //             countScore: res.data.count_score,
-    //         })
-    //     })
+        // // 获取分享数据
+        // db.customerGetUserInfo().then(res => {
+        //     // console.log(res)
+        //     GP.setData({
+        //         countScore: res.data.count_score,
+        //     })
+        // })
 
-    //     // 获取我的相册
-    //     db.customerGetPhotoList().then(res =>{
-    //         GP.setData({
-    //             photoList: res.data.photo_list
-    //         })
-    //     })
-    // },
+        // 获取我的相册
+        db.customerGetPhotoList().then(res =>{
+            GP.setData({
+                photoList: res.data.photo_list
+            })
+        })
+    },
 
 
     /**
