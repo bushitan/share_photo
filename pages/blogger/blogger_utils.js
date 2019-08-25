@@ -18,7 +18,7 @@ class BloggerUtils {
             columns: 2,
             imageFillMode: 'widthFix',
             icon: {
-                fill: 'https://www.51zfgx.com/qiniu/share_photo_image/fang_te/1_2019_07_26_10_14_17.jpg',
+                fill: 'http://img.12xiong.top/qiniu/share_photo_image/fang_te/1_2019_07_26_10_14_17.jpg',
                 default: 'https://ci.xiaohongshu.com/49fbd3cd-02d4-41f1-b27c-708e5fe8dac3'
             },
             fontColor: '#000'
