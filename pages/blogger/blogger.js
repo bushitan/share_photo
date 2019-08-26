@@ -108,12 +108,23 @@ Page({
     tapLike: function (event) {
         const cardId = event.detail.card_id
         var card = bloggerUtils.getArticleByID(cardId)
+
+
+        wx.showModal({
+            title: '活动已经结束',
+            content: '请关注"南宁方特东盟神画"公众号，获取更多活动资讯',
+            showCancel:false,
+        })
+        return 
+
+
         // 可以点赞
         if (card.liked ){
             wx.showToast({
                 title: '已点赞',
             })
         } else{
+            
             db.customerAddLike(cardId).then(res=>{
                 console.log(res)
             })

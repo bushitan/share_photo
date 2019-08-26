@@ -165,6 +165,14 @@ Page({
         // initQiniu();
         // 微信 API 选文件
 
+        wx.showModal({
+            title: '活动已经结束',
+            content: '请关注"南宁方特东盟神画"公众号，获取更多活动资讯',
+            showCancel: false,
+        })
+        return 
+
+
         if (GP.data.photoList.length >= 5) {
             wx.showModal({
                 title: '上传图片满了',
@@ -254,6 +262,13 @@ Page({
     },
 
     addPhoto(){
+        wx.showModal({
+            title: '活动已经结束',
+            content: '请关注"南宁方特东盟神画"公众号，获取更多活动',
+            showCancel: false,
+        })
+        return 
+
         wx.navigateTo({
             url: '/pages/host/host',
         })
